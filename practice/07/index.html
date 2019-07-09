@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>7. Functions | The C Programming Language Course</title>
+    <meta name="description" content="Educational materials for course &quot;The C Programming Language&quot;.">
+    <meta name="author" content="Vladislav Lyuminarskiy">
+  <meta name="theme-color" content="#5d6cbf">
+  <link rel="icon" href="/icons/icon512.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="license" href="/LICENSE">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    
+    <link rel="preload" href="/assets/css/0.styles.5419c221.css" as="style"><link rel="preload" href="/assets/js/app.6085cb73.js" as="script"><link rel="preload" href="/assets/js/3.498838e4.js" as="script"><link rel="preload" href="/assets/js/15.e308f660.js" as="script"><link rel="preload" href="/assets/js/4.d71eaa82.js" as="script"><link rel="prefetch" href="/assets/js/10.cbec5df7.js"><link rel="prefetch" href="/assets/js/11.fc67231a.js"><link rel="prefetch" href="/assets/js/12.d0966dbe.js"><link rel="prefetch" href="/assets/js/13.74de51dd.js"><link rel="prefetch" href="/assets/js/14.8c6045cf.js"><link rel="prefetch" href="/assets/js/16.cf805f19.js"><link rel="prefetch" href="/assets/js/17.99eb9f46.js"><link rel="prefetch" href="/assets/js/18.dac473e3.js"><link rel="prefetch" href="/assets/js/19.d49109b7.js"><link rel="prefetch" href="/assets/js/20.810f9fa2.js"><link rel="prefetch" href="/assets/js/5.35cf8ca2.js"><link rel="prefetch" href="/assets/js/6.c542c250.js"><link rel="prefetch" href="/assets/js/7.c73a3557.js"><link rel="prefetch" href="/assets/js/8.1ca68717.js"><link rel="prefetch" href="/assets/js/9.c34f0ff1.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.079e410d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.5419c221.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/icons/icon512.png" alt="The C Programming Language Course" class="logo"> <span class="site-name can-hide">The C Programming Language Course</span></a> <div class="links"><form id="search-form" role="search" class="algolia-search-wrapper search-box"><input id="algolia-search-input" class="search-query"></form> <nav class="nav-links can-hide"><div class="nav-item"><a href="/about/" class="nav-link">About</a></div><div class="nav-item"><a href="/practice/" class="nav-link router-link-active">Practice lessons</a></div> <a href="https://github.com/C-course/C-course" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/about/" class="nav-link">About</a></div><div class="nav-item"><a href="/practice/" class="nav-link router-link-active">Practice lessons</a></div> <a href="https://github.com/C-course/C-course" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><a href="/practice/" class="sidebar-link">Practice lessons</a></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Practice lessons</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/practice/01/" class="sidebar-link">1. Basic data types, operators, and if-else statement</a></li><li><a href="/practice/02/" class="sidebar-link">2. Conditional expression, enumerations, and switch statement</a></li><li><a href="/practice/03/" class="sidebar-link">3. Loops and arrays: part one</a></li><li><a href="/practice/04/" class="sidebar-link">4. Loops and arrays: part two</a></li><li><a href="/practice/05/" class="sidebar-link">5. Strings</a></li><li><a href="/practice/06/" class="sidebar-link">6. Multidimensional arrays</a></li><li><a href="/practice/07/" class="active sidebar-link">7. Functions</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/practice/07/#_7-1-creating-your-first-function" class="sidebar-link">7.1. Creating your first function</a></li><li class="sidebar-sub-header"><a href="/practice/07/#_7-2-searching-for-a-value" class="sidebar-link">7.2. Searching for a value</a></li><li class="sidebar-sub-header"><a href="/practice/07/#_7-3-search-and-replacement" class="sidebar-link">7.3. Search and replacement</a></li><li class="sidebar-sub-header"><a href="/practice/07/#_7-4-search-and-counting" class="sidebar-link">7.4. Search and counting</a></li><li class="sidebar-sub-header"><a href="/practice/07/#_7-5-matrix-and-diagonal" class="sidebar-link">7.5. Matrix and diagonal</a></li></ul></li><li><a href="/practice/08/" class="sidebar-link">8. Standard library: stdio.h</a></li><li><a href="/practice/09/" class="sidebar-link">9. Standard library: miscellaneous</a></li><li><a href="/practice/10/" class="sidebar-link">10. Combining everything together</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_7-functions"><a href="#_7-functions" aria-hidden="true" class="header-anchor">#</a> 7. Functions</h1> <h2 id="_7-1-creating-your-first-function"><a href="#_7-1-creating-your-first-function" aria-hidden="true" class="header-anchor">#</a> 7.1. Creating your first function</h2> <p>Create a function.</p> <p>Variants (click to open):</p> <details><summary>1</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">/**
+ * Calculates the absolute value of a number.
+ *
+ * @param number A number.
+ * @return The absolute value.
+ */</span>
+<span class="token keyword">double</span> <span class="token function">abs</span><span class="token punctuation">(</span><span class="token keyword">double</span> number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><hr></details> <details><summary>2</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">/**
+ * Calculates the result of raising a number to a power.
+ *
+ * @param base A number.
+ * @param exponent An exponent.
+ * @return The result of raising a number to a power.
+ */</span>
+<span class="token keyword">double</span> <span class="token function">pow</span><span class="token punctuation">(</span><span class="token keyword">double</span> base<span class="token punctuation">,</span> <span class="token keyword">int</span> exponent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><hr></details> <details><summary>3</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">/**
+ * Calculates the multiplication of two numbers.
+ *
+ * @param left First number.
+ * @param right Second number.
+ * @return The result of a multiplication.
+ */</span>
+<span class="token keyword">double</span> <span class="token function">mul</span><span class="token punctuation">(</span><span class="token keyword">double</span> left<span class="token punctuation">,</span> <span class="token keyword">double</span> right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><hr></details> <details><summary>4</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">/**
+ * Calculates the result of dividing the first number by the second.
+ *
+ * @param left First number.
+ * @param right Second number.
+ * @return The result of a division.
+ */</span>
+<span class="token keyword">double</span> <span class="token function">div</span><span class="token punctuation">(</span><span class="token keyword">double</span> left<span class="token punctuation">,</span> <span class="token keyword">double</span> right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><hr></details> <details><summary>5</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">/**
+ * Calculates the sum of two numbers.
+ *
+ * @param left First number.
+ * @param right Second number.
+ * @return The result of a sum.
+ */</span>
+<span class="token keyword">double</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token keyword">double</span> left<span class="token punctuation">,</span> <span class="token keyword">double</span> right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><hr></details> <details><summary>6</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">/**
+ * Calculates the result of subtraction of the second number from the first.
+ *
+ * @param left First number.
+ * @param right Second number.
+ * @return The result of a subtraction.
+ */</span>
+<span class="token keyword">double</span> <span class="token function">sub</span><span class="token punctuation">(</span><span class="token keyword">double</span> left<span class="token punctuation">,</span> <span class="token keyword">double</span> right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><hr></details> <p>Demonstrate at least three examples of using it in the <code>main()</code> function.</p> <h3 id="reference-7-1"><a href="#reference-7-1" aria-hidden="true" class="header-anchor">#</a> Reference (7.1)</h3> <p>Functions break large computing tasks into smaller ones, and enable people to build on what others have done instead of starting over from scratch. Appropriate functions hide details of operation from parts of the program that don't need to know about them, thus clarifying the whole, and easing the pain of making changes.</p> <p>Syntax of function definition:</p> <div class="language-c extra-class"><pre class="language-c"><code>return_type <span class="token function">function_name</span><span class="token punctuation">(</span>argument_declarations<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  declarations<span class="token punctuation">;</span>
+  statements<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>The <code>return</code> statement is the mechanism for returning a value from the caller function to its caller. Any expression can follow <code>return</code>:</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">return</span> expression<span class="token punctuation">;</span>
+</code></pre></div><p>For example:</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">void</span> <span class="token function">print_number</span><span class="token punctuation">(</span><span class="token keyword">int</span> number<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>This definition says that <code>print_number</code> is a function that takes one <code>int</code> argument and returns nothing. Now the function can be called like this:</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token function">print_number</span><span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="_7-2-searching-for-a-value"><a href="#_7-2-searching-for-a-value" aria-hidden="true" class="header-anchor">#</a> 7.2. Searching for a value</h2> <p>Create a function:</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">/**
+ * Searches the array for a value that satisfies the condition.
+ *
+ * @param array An array.
+ * @param size The size of an array.
+ * @return The search results.
+ */</span>
+bool <span class="token function">contains</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>The function should search in the array a number ...</p> <table><thead><tr><th>Variant</th> <th>Description</th></tr></thead> <tbody><tr><td>1</td> <td>... for which the remainder of the division by <code>6</code> equals <code>5</code>.</td></tr> <tr><td>2</td> <td>... for which the remainder of the division by <code>9</code> equals <code>4</code>.</td></tr> <tr><td>3</td> <td>... for which the remainder of the division by <code>31</code> is greater than <code>16</code> and less than <code>21</code>.</td></tr> <tr><td>4</td> <td>... for which the remainder of the division by <code>18</code> is greater than <code>4</code> and less than <code>7</code>.</td></tr> <tr><td>5</td> <td>... is greater than <code>40</code> and less than <code>46</code>.</td></tr> <tr><td>6</td> <td>... is greater than <code>13</code> and less than <code>17</code>.</td></tr></tbody></table> <p>Function should return <code>true</code> if the required number was found and <code>false</code> otherwise.</p> <p>Demonstrate at least three examples of using the <code>contains()</code> function in the <code>main()</code> function.</p> <h3 id="reference-7-2"><a href="#reference-7-2" aria-hidden="true" class="header-anchor">#</a> Reference (7.2)</h3> <p>Here is an example how to pass an array as an argument of a function:</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">double</span> <span class="token function">average</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="_7-3-search-and-replacement"><a href="#_7-3-search-and-replacement" aria-hidden="true" class="header-anchor">#</a> 7.3. Search and replacement</h2> <p>Create a function:</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">/**
+ * Searches for values (that satisfy the condition)
+ * in the array, and replaces them.
+ *
+ * @param array An array.
+ * @param size The size of an array.
+ */</span>
+<span class="token keyword">void</span> <span class="token function">filter</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>The function should replace all of the ...</p> <table><thead><tr><th>Variant</th> <th>Description</th></tr></thead> <tbody><tr><td>1</td> <td>... positive values by their square.</td></tr> <tr><td>2</td> <td>... negative values by their cube.</td></tr> <tr><td>3</td> <td>... positive values by their negation.</td></tr> <tr><td>4</td> <td>... negative values by their negation.</td></tr> <tr><td>5</td> <td>... even values in the array with zero.</td></tr> <tr><td>6</td> <td>... odd values in the array with zero.</td></tr></tbody></table> <p>Demonstrate at least three examples of using the <code>filter()</code> function in the <code>main()</code> function.</p> <h2 id="_7-4-search-and-counting"><a href="#_7-4-search-and-counting" aria-hidden="true" class="header-anchor">#</a> 7.4. Search and counting</h2> <p>Create a function:</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">/**
+ * Searches for values (that satisfy the condition)
+ * in a two-dimensional 5-columns array, and counts them.
+ *
+ * @param array A two-dimensional 5-columns array.
+ * @param rows_number The number of rows in the array.
+ * @return The counting results.
+ */</span>
+<span class="token keyword">int</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> rows_number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>The function should find the count of the values in the a two-dimensional 5-columns array for the values ...</p> <table><thead><tr><th>Variant</th> <th>Description</th></tr></thead> <tbody><tr><td>1</td> <td>... that are greater than <code>40</code> and less than <code>46</code>.</td></tr> <tr><td>2</td> <td>... that are greater than <code>13</code> and less than <code>17</code>.</td></tr> <tr><td>3</td> <td>... for which the remainder of the division by <code>14</code> is greater than <code>2</code> and less than <code>5</code>.</td></tr> <tr><td>4</td> <td>... for which the remainder of the division by <code>22</code> is greater than <code>12</code> and less than <code>17</code>.</td></tr> <tr><td>5</td> <td>... that are even.</td></tr> <tr><td>6</td> <td>... that are odd.</td></tr></tbody></table> <p>Demonstrate at least three examples of using the <code>count()</code> function in the <code>main()</code> function.</p> <h3 id="reference-7-4"><a href="#reference-7-4" aria-hidden="true" class="header-anchor">#</a> Reference (7.4)</h3> <p>If a two-dimensional array is to be passed to a function, the parameter declaration in the function must include the number of columns (the number of rows is irrelevant):</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">double</span> <span class="token function">average</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="_7-5-matrix-and-diagonal"><a href="#_7-5-matrix-and-diagonal" aria-hidden="true" class="header-anchor">#</a> 7.5. Matrix and diagonal</h2> <p>Create a function:</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">/**
+ * Calculates the average value of the values (that satisfy the condition)
+ * in a two-dimensional 5-columns array.
+ *
+ * @param array A two-dimensional 5-columns array.
+ * @param rows_number The number of rows in the array.
+ * @return The average value.
+ */</span>
+<span class="token keyword">double</span> <span class="token function">average</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> rows_number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>The function should find the average value in a two-dimensional 5-columns array for the values ...</p> <table><thead><tr><th>Variant</th> <th>Description</th></tr></thead> <tbody><tr><td>1</td> <td>... that are above the antidiagonal.</td></tr> <tr><td>2</td> <td>... that are below the antidiagonal.</td></tr> <tr><td>3</td> <td>... that are on the main diagonal.</td></tr> <tr><td>4</td> <td>... that are on the antidiagonal.</td></tr> <tr><td>5</td> <td>... that are above the main diagonal.</td></tr> <tr><td>6</td> <td>... that are below the main diagonal.</td></tr></tbody></table> <p>Demonstrate at least three examples of using the <code>average()</code> function in the <code>main()</code> function.</p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/C-course/C-course/edit/master/docs/practice/07/README.md" target="_blank" rel="noopener noreferrer">Edit this page</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">Last updated: </span> <span class="time">7/9/2019, 9:49:50 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/practice/06/" class="prev">
+          6. Multidimensional arrays
+        </a></span> <span class="next"><a href="/practice/08/">
+          8. Standard library: stdio.h
+        </a>
+        →
+      </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6085cb73.js" defer></script><script src="/assets/js/3.498838e4.js" defer></script><script src="/assets/js/15.e308f660.js" defer></script><script src="/assets/js/4.d71eaa82.js" defer></script>
+  </body>
+</html>

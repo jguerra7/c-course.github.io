@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>10. Combining everything together | The C Programming Language Course</title>
+    <meta name="description" content="Educational materials for course &quot;The C Programming Language&quot;.">
+    <meta name="author" content="Vladislav Lyuminarskiy">
+  <meta name="theme-color" content="#5d6cbf">
+  <link rel="icon" href="/icons/icon512.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="license" href="/LICENSE">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    
+    <link rel="preload" href="/assets/css/0.styles.5419c221.css" as="style"><link rel="preload" href="/assets/js/app.6085cb73.js" as="script"><link rel="preload" href="/assets/js/3.498838e4.js" as="script"><link rel="preload" href="/assets/js/18.dac473e3.js" as="script"><link rel="preload" href="/assets/js/4.d71eaa82.js" as="script"><link rel="prefetch" href="/assets/js/10.cbec5df7.js"><link rel="prefetch" href="/assets/js/11.fc67231a.js"><link rel="prefetch" href="/assets/js/12.d0966dbe.js"><link rel="prefetch" href="/assets/js/13.74de51dd.js"><link rel="prefetch" href="/assets/js/14.8c6045cf.js"><link rel="prefetch" href="/assets/js/15.e308f660.js"><link rel="prefetch" href="/assets/js/16.cf805f19.js"><link rel="prefetch" href="/assets/js/17.99eb9f46.js"><link rel="prefetch" href="/assets/js/19.d49109b7.js"><link rel="prefetch" href="/assets/js/20.810f9fa2.js"><link rel="prefetch" href="/assets/js/5.35cf8ca2.js"><link rel="prefetch" href="/assets/js/6.c542c250.js"><link rel="prefetch" href="/assets/js/7.c73a3557.js"><link rel="prefetch" href="/assets/js/8.1ca68717.js"><link rel="prefetch" href="/assets/js/9.c34f0ff1.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.079e410d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.5419c221.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/icons/icon512.png" alt="The C Programming Language Course" class="logo"> <span class="site-name can-hide">The C Programming Language Course</span></a> <div class="links"><form id="search-form" role="search" class="algolia-search-wrapper search-box"><input id="algolia-search-input" class="search-query"></form> <nav class="nav-links can-hide"><div class="nav-item"><a href="/about/" class="nav-link">About</a></div><div class="nav-item"><a href="/practice/" class="nav-link router-link-active">Practice lessons</a></div> <a href="https://github.com/C-course/C-course" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/about/" class="nav-link">About</a></div><div class="nav-item"><a href="/practice/" class="nav-link router-link-active">Practice lessons</a></div> <a href="https://github.com/C-course/C-course" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><a href="/practice/" class="sidebar-link">Practice lessons</a></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Practice lessons</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/practice/01/" class="sidebar-link">1. Basic data types, operators, and if-else statement</a></li><li><a href="/practice/02/" class="sidebar-link">2. Conditional expression, enumerations, and switch statement</a></li><li><a href="/practice/03/" class="sidebar-link">3. Loops and arrays: part one</a></li><li><a href="/practice/04/" class="sidebar-link">4. Loops and arrays: part two</a></li><li><a href="/practice/05/" class="sidebar-link">5. Strings</a></li><li><a href="/practice/06/" class="sidebar-link">6. Multidimensional arrays</a></li><li><a href="/practice/07/" class="sidebar-link">7. Functions</a></li><li><a href="/practice/08/" class="sidebar-link">8. Standard library: stdio.h</a></li><li><a href="/practice/09/" class="sidebar-link">9. Standard library: miscellaneous</a></li><li><a href="/practice/10/" class="active sidebar-link">10. Combining everything together</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_10-combining-everything-together"><a href="#_10-combining-everything-together" aria-hidden="true" class="header-anchor">#</a> 10. Combining everything together</h1> <p>Solve the task, using all the practical skills that have been developed earlier.</p> <p>Variants (click to open):</p> <details><summary>1</summary> <hr> <p><strong>Making a histogram</strong></p> <p>Open a text file and read all its contents. Then, based on its contents, build a histogram that displays the number of alphabetic characters it contains. Count the characters in a register-independent way, that is, the symbols <code>a</code> and <code>A</code> on the histogram are the same symbol.</p> <p>Each histogram's column should contain:</p> <ol><li><code>Title</code> - alphabetical character.</li> <li><code>Body</code> - dashed line.</li> <li><code>Value</code> - number of encounters of the character.</li></ol> <p>The number of dashes should correspond to the number of encounters of a particular alphabetical character in the text.</p> <p>Sample output:</p> <div class="language- extra-class"><pre class="language-text"><code>a: ---------------------------- 28
+b: ------------------- 19
+c: -- 2
+d: ------------- 13
+e: - 1
+f: - 1
+g: - 1
+h: --------------- 15
+i: ------ 6
+j: 0
+k: ----------------------------- 29
+l: 0
+m: 0
+n: 0
+o: 0
+p: -- 2
+q: 0
+r: - 1
+s: 0
+t: --- 1
+u: 0
+v: -------- 8
+w: -- 2
+x: -- 2
+y: - 1
+z: --- 3
+</code></pre></div><hr></details> <details><summary>2</summary> <hr> <p><strong>Rock-paper-scissors game</strong></p> <p>Create a game in which the <code>Player</code> will compete with the <code>Computer</code> in the rock-paper-scissors game.</p> <p>A player who decides to play <code>rock</code> will beat another player who has chosen <code>scissors</code>, but will lose to one who has played <code>paper</code>; a play of <code>paper</code> will lose to a play of <code>scissors</code>. If both players choose the same shape, the game's turn is tied and is immediately replayed to break the tie.</p> <p>The game consists of three turns. The winner is the player who wins twice.</p> <p>Game's algorithm:</p> <ol><li>Ask the <code>Player</code> to enter a nickname.</li> <li>Display the turn's number.</li> <li>Ask the <code>Player</code> to choose a shape.</li> <li>The <code>Player</code> enters the name of the desired shape.</li> <li>Select a random figure for the <code>Computer</code>.</li> <li>If the <code>Computer</code> and the <code>Player</code> have chosen the same shapes, go to step <code>3</code>.</li> <li>Determine the winner of this turn.</li> <li>Display the name of the winner of the turn.</li> <li>If one of the players has already won twice, finish the game. Otherwise go to step <code>2</code>.</li> <li>Display the name of the winner of the game.</li></ol> <p>Sample output:</p> <div class="language- extra-class"><pre class="language-text"><code>Please, enter your nickname: Nick Smith
+
+========== First turn ==========
+Choose a shape: paper
+The Computer chose the scissors.
+
+The winner of the turn is Computer.
+
+========== Second turn ==========
+Choose a shape: rock
+The Computer chose the rock.
+
+Choose a shape: rock
+The Computer chose the scissors.
+
+The winner of the turn is Nick Smith.
+
+========== Third turn ==========
+Choose a shape: rock
+The Computer chose the paper.
+
+The winner of the turn is Computer.
+
+========== Summary ==========
+The winner of the game is Computer.
+</code></pre></div><hr></details> <details><summary>3</summary> <hr> <hr></details> <details><summary>4</summary> <hr> <hr></details> <details><summary>5</summary> <hr> <hr></details> <details><summary>6</summary> <hr> <hr></details></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/C-course/C-course/edit/master/docs/practice/10/README.md" target="_blank" rel="noopener noreferrer">Edit this page</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">Last updated: </span> <span class="time">7/9/2019, 9:49:50 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/practice/09/" class="prev">
+          9. Standard library: miscellaneous
+        </a></span> <!----></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6085cb73.js" defer></script><script src="/assets/js/3.498838e4.js" defer></script><script src="/assets/js/18.dac473e3.js" defer></script><script src="/assets/js/4.d71eaa82.js" defer></script>
+  </body>
+</html>

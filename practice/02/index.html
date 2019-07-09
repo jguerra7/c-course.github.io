@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>2. Conditional expression, enumerations, and switch statement | The C Programming Language Course</title>
+    <meta name="description" content="Educational materials for course &quot;The C Programming Language&quot;.">
+    <meta name="author" content="Vladislav Lyuminarskiy">
+  <meta name="theme-color" content="#5d6cbf">
+  <link rel="icon" href="/icons/icon512.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="license" href="/LICENSE">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    
+    <link rel="preload" href="/assets/css/0.styles.5419c221.css" as="style"><link rel="preload" href="/assets/js/app.6085cb73.js" as="script"><link rel="preload" href="/assets/js/3.498838e4.js" as="script"><link rel="preload" href="/assets/js/10.cbec5df7.js" as="script"><link rel="preload" href="/assets/js/4.d71eaa82.js" as="script"><link rel="prefetch" href="/assets/js/11.fc67231a.js"><link rel="prefetch" href="/assets/js/12.d0966dbe.js"><link rel="prefetch" href="/assets/js/13.74de51dd.js"><link rel="prefetch" href="/assets/js/14.8c6045cf.js"><link rel="prefetch" href="/assets/js/15.e308f660.js"><link rel="prefetch" href="/assets/js/16.cf805f19.js"><link rel="prefetch" href="/assets/js/17.99eb9f46.js"><link rel="prefetch" href="/assets/js/18.dac473e3.js"><link rel="prefetch" href="/assets/js/19.d49109b7.js"><link rel="prefetch" href="/assets/js/20.810f9fa2.js"><link rel="prefetch" href="/assets/js/5.35cf8ca2.js"><link rel="prefetch" href="/assets/js/6.c542c250.js"><link rel="prefetch" href="/assets/js/7.c73a3557.js"><link rel="prefetch" href="/assets/js/8.1ca68717.js"><link rel="prefetch" href="/assets/js/9.c34f0ff1.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.079e410d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.5419c221.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/icons/icon512.png" alt="The C Programming Language Course" class="logo"> <span class="site-name can-hide">The C Programming Language Course</span></a> <div class="links"><form id="search-form" role="search" class="algolia-search-wrapper search-box"><input id="algolia-search-input" class="search-query"></form> <nav class="nav-links can-hide"><div class="nav-item"><a href="/about/" class="nav-link">About</a></div><div class="nav-item"><a href="/practice/" class="nav-link router-link-active">Practice lessons</a></div> <a href="https://github.com/C-course/C-course" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/about/" class="nav-link">About</a></div><div class="nav-item"><a href="/practice/" class="nav-link router-link-active">Practice lessons</a></div> <a href="https://github.com/C-course/C-course" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><a href="/practice/" class="sidebar-link">Practice lessons</a></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Practice lessons</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/practice/01/" class="sidebar-link">1. Basic data types, operators, and if-else statement</a></li><li><a href="/practice/02/" class="active sidebar-link">2. Conditional expression, enumerations, and switch statement</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/practice/02/#_2-1-conditional-expression" class="sidebar-link">2.1. Conditional expression</a></li><li class="sidebar-sub-header"><a href="/practice/02/#_2-2-enumerations" class="sidebar-link">2.2. Enumerations</a></li><li class="sidebar-sub-header"><a href="/practice/02/#_2-3-the-switch-statement" class="sidebar-link">2.3. The switch statement</a></li><li class="sidebar-sub-header"><a href="/practice/02/#_2-4-from-if-else-statement-to-switch-statement" class="sidebar-link">2.4. From if-else statement to switch statement</a></li><li class="sidebar-sub-header"><a href="/practice/02/#_2-5-making-a-questionnaire" class="sidebar-link">2.5. Making a questionnaire</a></li></ul></li><li><a href="/practice/03/" class="sidebar-link">3. Loops and arrays: part one</a></li><li><a href="/practice/04/" class="sidebar-link">4. Loops and arrays: part two</a></li><li><a href="/practice/05/" class="sidebar-link">5. Strings</a></li><li><a href="/practice/06/" class="sidebar-link">6. Multidimensional arrays</a></li><li><a href="/practice/07/" class="sidebar-link">7. Functions</a></li><li><a href="/practice/08/" class="sidebar-link">8. Standard library: stdio.h</a></li><li><a href="/practice/09/" class="sidebar-link">9. Standard library: miscellaneous</a></li><li><a href="/practice/10/" class="sidebar-link">10. Combining everything together</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_2-conditional-expression-enumerations-and-switch-statement"><a href="#_2-conditional-expression-enumerations-and-switch-statement" aria-hidden="true" class="header-anchor">#</a> 2. Conditional expression, enumerations, and <code>switch</code> statement</h1> <h2 id="_2-1-conditional-expression"><a href="#_2-1-conditional-expression" aria-hidden="true" class="header-anchor">#</a> 2.1. Conditional expression</h2> <p>Replace <code>if-else</code> statement with conditional expression.</p> <p>Variants (click to open):</p> <details><summary>1</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">double</span> x <span class="token operator">=</span> <span class="token number">23</span><span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token number">5.2</span><span class="token punctuation">,</span> result<span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">/</span> <span class="token number">100</span> <span class="token operator">+</span> y <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  result <span class="token operator">=</span> x <span class="token operator">*</span> y
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span>
+<span class="token punctuation">{</span>
+  result <span class="token operator">=</span> <span class="token number">100</span> <span class="token operator">*</span> x <span class="token operator">-</span> y
+<span class="token punctuation">}</span>
+</code></pre></div><hr></details> <details><summary>2</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">int</span> f <span class="token operator">=</span> <span class="token number">32</span><span class="token punctuation">,</span> s <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">,</span> result<span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>f <span class="token operator">/</span> <span class="token number">5</span> <span class="token operator">&lt;</span> s <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  result <span class="token operator">=</span> f<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span>
+<span class="token punctuation">{</span>
+  result <span class="token operator">=</span> s <span class="token operator">*</span> s<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><hr></details> <details><summary>3</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">char</span> g <span class="token operator">=</span> <span class="token string">'a'</span><span class="token punctuation">,</span> h <span class="token operator">=</span> <span class="token string">'b'</span><span class="token punctuation">,</span> result<span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>g <span class="token operator">&gt;=</span> h<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  result <span class="token operator">=</span> <span class="token string">'x'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span>
+<span class="token punctuation">{</span>
+  result <span class="token operator">=</span> <span class="token string">'y'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><hr></details> <details><summary>4</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> result<span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&amp;&amp;</span> j <span class="token operator">||</span> <span class="token operator">!</span>i <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>j <span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  result <span class="token operator">=</span> i <span class="token operator">||</span> j<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span>
+<span class="token punctuation">{</span>
+  result <span class="token operator">=</span> i <span class="token operator">&amp;&amp;</span> j<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><hr></details> <details><summary>5</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">int</span> e <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> f <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> result<span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>e <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>f <span class="token operator">||</span> <span class="token operator">!</span>e <span class="token operator">&amp;&amp;</span> f<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  result <span class="token operator">=</span> e <span class="token operator">&amp;&amp;</span> f<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span>
+<span class="token punctuation">{</span>
+  result <span class="token operator">=</span> e <span class="token operator">||</span> f<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><hr></details> <details><summary>6</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">int</span> q <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> w <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> result<span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>q <span class="token operator">==</span> w <span class="token operator">||</span> q<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  result <span class="token operator">=</span> <span class="token operator">!</span>q<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span>
+<span class="token punctuation">{</span>
+  result <span class="token operator">=</span> w <span class="token operator">||</span> q<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><hr></details> <details><summary>7</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">double</span> k <span class="token operator">=</span> <span class="token number">251.2</span><span class="token punctuation">,</span> l <span class="token operator">=</span> <span class="token number">113.1</span><span class="token punctuation">,</span> result<span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">&gt;</span> l <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  result <span class="token operator">=</span> k <span class="token operator">/</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span>
+<span class="token punctuation">{</span>
+  result <span class="token operator">=</span> l <span class="token operator">*</span> l<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><hr></details> <details><summary>8</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span> result<span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token operator">&lt;</span> b<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  result <span class="token operator">=</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span>
+<span class="token punctuation">{</span>
+  result <span class="token operator">=</span> a <span class="token operator">-</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><hr></details> <details><summary>9</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">double</span> c <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">,</span> d <span class="token operator">=</span> <span class="token number">2.57</span><span class="token punctuation">,</span> result<span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> d<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  result <span class="token operator">=</span> c <span class="token operator">*</span> d<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span>
+<span class="token punctuation">{</span>
+  result <span class="token operator">=</span> c <span class="token operator">/</span> d<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><hr></details> <h3 id="reference-2-1"><a href="#reference-2-1" aria-hidden="true" class="header-anchor">#</a> Reference (2.1)</h3> <p>Syntax of the conditional expression:</p> <div class="language-c extra-class"><pre class="language-c"><code>condition <span class="token operator">?</span> expression1 <span class="token operator">:</span> expression2<span class="token punctuation">;</span>
+</code></pre></div><p><code>condition</code> is evaluated first. If it is true (non-zero), then <code>expression1</code> is evaluated, and that is the value of conditional expression. Otherwise <code>expression2</code> is evaluated.</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">if</span> <span class="token punctuation">(</span>condition<span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token operator">|</span>
+   x <span class="token operator">=</span> expression1<span class="token punctuation">;</span>   <span class="token operator">|</span>  
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>              <span class="token operator">|</span>  <span class="token operator">=</span><span class="token operator">&gt;</span> x <span class="token operator">=</span> condition <span class="token operator">?</span> expression1 <span class="token operator">:</span> expression2<span class="token punctuation">;</span>
+   x <span class="token operator">=</span> expression2<span class="token punctuation">;</span>   <span class="token operator">|</span>
+<span class="token punctuation">}</span>                     <span class="token operator">|</span>
+</code></pre></div><p>Learn more: http://www.trytoprogram.com/c-programming/c-conditional-operator/</p> <h2 id="_2-2-enumerations"><a href="#_2-2-enumerations" aria-hidden="true" class="header-anchor">#</a> 2.2. Enumerations</h2> <p>Create your own enumeration:</p> <table><thead><tr><th>Variant</th> <th>Description</th></tr></thead> <tbody><tr><td>1</td> <td>Enumeration of rainbow's colors.</td></tr> <tr><td>2</td> <td>Enumeration of some birds.</td></tr> <tr><td>3</td> <td>Enumeration of months.</td></tr> <tr><td>4</td> <td>Enumeration of some flowers.</td></tr> <tr><td>5</td> <td>Enumeration of some singers</td></tr> <tr><td>6</td> <td>Enumeration of some phone brands.</td></tr> <tr><td>7</td> <td>Enumeration of some animals.</td></tr> <tr><td>8</td> <td>Enumeration of some film genres.</td></tr> <tr><td>9</td> <td>Enumeration of some car brands.</td></tr></tbody></table> <h3 id="reference-2-2"><a href="#reference-2-2" aria-hidden="true" class="header-anchor">#</a> Reference (2.2)</h3> <p>Syntax of the enumeration:</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">enum</span> <span class="token class-name">enumeration_name</span>
+<span class="token punctuation">{</span>
+  FIRST_VALUE<span class="token punctuation">,</span>
+  SECOND_VALUE<span class="token punctuation">,</span>
+  SPECIFIED_VALUE <span class="token operator">=</span> <span class="token number">30</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>An enumeration is a list of constant integer values. The first name in an enum has value <code>0</code>, the next <code>1</code>, and so on, unless explicit values are specified. Enumerations provide a convenient way to associate constants values with names.</p> <h2 id="_2-3-the-switch-statement"><a href="#_2-3-the-switch-statement" aria-hidden="true" class="header-anchor">#</a> 2.3. The <code>switch</code> statement</h2> <p>Take your enumeration from previous task and use it in switch statement like this:</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">enum</span> <span class="token class-name">Boolean</span> <span class="token punctuation">{</span> TRUE<span class="token punctuation">,</span> FALSE <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- Take this from previous task</span>
+
+<span class="token keyword">int</span> enum_var <span class="token operator">=</span> TRUE<span class="token punctuation">;</span>  <span class="token comment">// &lt;-- Choose one of values of your enumeration</span>
+
+<span class="token keyword">switch</span> <span class="token punctuation">(</span>enum_var<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">case</span> TRUE<span class="token operator">:</span>         <span class="token comment">// |</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;TRUE&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// | Create case for each value of your enumeration</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>           <span class="token comment">// |</span>
+
+  <span class="token keyword">case</span> FALSE<span class="token operator">:</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;FALSE&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+   
+  <span class="token keyword">default</span><span class="token operator">:</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;WRONG VALUE FOR Boolean&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- Put the name of your enumeration here</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>So you should print name of your enumeration's constant.</p> <h3 id="reference-2-3"><a href="#reference-2-3" aria-hidden="true" class="header-anchor">#</a> Reference (2.3)</h3> <p>Syntax of the <code>switch</code> statement:</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">switch</span> <span class="token punctuation">(</span>expression<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">case</span> constexpr1<span class="token operator">:</span>
+    statement1<span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">case</span> constexpr2<span class="token operator">:</span>
+    statement2<span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">default</span><span class="token operator">:</span> statement3<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>The switch statement is a multi-way decision that tests whether an expression matches one of a number of constant integer values, and branches accordingly.</p> <p>Each case is labeled by one or more integer-values constants or constant expressions. If a case matches the expression value, execution starts at that case. All case expressions must be different. The case labeled <code>default</code> is executed if none of the other cases are satisfied. A <code>default</code> is optional; if it isn't there and if none of the cases match, no action at all takes place. Cases and the <code>default</code> clause can occur in any order.</p> <h2 id="_2-4-from-if-else-statement-to-switch-statement"><a href="#_2-4-from-if-else-statement-to-switch-statement" aria-hidden="true" class="header-anchor">#</a> 2.4. From <code>if-else</code> statement to <code>switch</code> statement</h2> <p>Replace <code>if-else</code> statements chain with <code>switch</code> statement.</p> <p>Variants (click to open):</p> <details><summary>1</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">int</span> number <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>number <span class="token operator">==</span> <span class="token number">100</span> <span class="token operator">||</span> number <span class="token operator">==</span> <span class="token number">200</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;100 || 200&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>number <span class="token operator">==</span> <span class="token number">300</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;300&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>number <span class="token operator">==</span> <span class="token number">400</span> <span class="token operator">||</span> number <span class="token operator">==</span> <span class="token number">500</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;400 || 500&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;wrong value&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><hr></details> <details><summary>2</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">enum</span> <span class="token class-name">Animal</span> <span class="token punctuation">{</span> CAT<span class="token punctuation">,</span> DOG<span class="token punctuation">,</span> SNAKE<span class="token punctuation">,</span> CROCODILE <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> animal <span class="token operator">=</span> SNAKE<span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>animal <span class="token operator">==</span> CAT<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;CAT&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>animal <span class="token operator">==</span> DOG<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;BLUE&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>animal <span class="token operator">==</span> SNAKE <span class="token operator">||</span> animal <span class="token operator">==</span> CROCODILE<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;SNAKE || CROCODILE&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;wrong value&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><hr></details> <details><summary>3</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">int</span> number <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>number <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;1&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>number <span class="token operator">==</span>  <span class="token number">2</span> <span class="token operator">||</span> number <span class="token operator">==</span>  <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;2 || 3&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;wrong value&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><hr></details> <details><summary>4</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">int</span> year <span class="token operator">=</span> <span class="token number">2012</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>year <span class="token operator">==</span> <span class="token number">1147</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Moscow&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>year <span class="token operator">==</span> <span class="token number">1760</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Izhevsk&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>year <span class="token operator">==</span> <span class="token number">1005</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Kazan&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;wrong value&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><hr></details> <details><summary>5</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">enum</span> <span class="token class-name">Color</span> <span class="token punctuation">{</span> GREEN<span class="token punctuation">,</span> BLUE<span class="token punctuation">,</span> RED<span class="token punctuation">,</span> ORANGE <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> color <span class="token operator">=</span> ORANGE<span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>color <span class="token operator">==</span> GREEN<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;GREEN&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>color <span class="token operator">==</span> BLUE<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;BLUE&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>color <span class="token operator">==</span> RED <span class="token operator">||</span> color <span class="token operator">==</span> ORANGE<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;RED || ORANGE&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;wrong value&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><hr></details> <details><summary>6</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">enum</span> <span class="token class-name">COUNTRY</span> <span class="token punctuation">{</span> RUSSIA<span class="token punctuation">,</span> USA<span class="token punctuation">,</span> UK<span class="token punctuation">,</span> FRANCE<span class="token punctuation">,</span> SPAIN<span class="token punctuation">,</span> MEXICO <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> country <span class="token operator">=</span> RUSSIA<span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>country <span class="token operator">==</span> CAT<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;RUSSIAN&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>country <span class="token operator">==</span> USA <span class="token operator">||</span> country <span class="token operator">==</span> UK<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;ENGLISH&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>country <span class="token operator">==</span> FRANCE<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;FRENCH&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>country <span class="token operator">==</span> SPAIN <span class="token operator">||</span> country <span class="token operator">==</span> MEXICO<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;SPANISH&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;wrong value&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><hr></details> <details><summary>7</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">char</span> symbol <span class="token operator">=</span> <span class="token string">'F'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>symbol <span class="token operator">==</span> <span class="token string">'A'</span> <span class="token operator">||</span> symbol <span class="token operator">==</span>  <span class="token string">'B'</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;A || B&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>symbol <span class="token operator">==</span>  <span class="token string">'C'</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;C&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;wrong value&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><hr></details> <details><summary>8</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">char</span> symbol <span class="token operator">=</span> <span class="token string">'Z'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>symbol <span class="token operator">==</span> <span class="token string">'Q'</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Q&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>symbol <span class="token operator">==</span>  <span class="token string">'R'</span> <span class="token operator">||</span> symbol <span class="token operator">==</span>  <span class="token string">'r'</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;R || r&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>symbol <span class="token operator">==</span>  <span class="token string">'S'</span> <span class="token operator">||</span> symbol <span class="token operator">==</span>  <span class="token string">'s'</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;S || s&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;wrong value&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><hr></details> <details><summary>9</summary> <hr> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">enum</span> <span class="token class-name">MONTH</span> <span class="token punctuation">{</span> DEC<span class="token punctuation">,</span> JUN<span class="token punctuation">,</span> FEB<span class="token punctuation">,</span> APR<span class="token punctuation">,</span> MAR<span class="token punctuation">,</span> MAY<span class="token punctuation">,</span> JUN <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> month <span class="token operator">=</span> JUN<span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>month <span class="token operator">==</span> DEC <span class="token operator">||</span> month <span class="token operator">==</span> JUN <span class="token operator">||</span> month <span class="token operator">==</span> FEB<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;WINTER&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>month <span class="token operator">==</span> APR <span class="token operator">||</span> month <span class="token operator">==</span> MAR <span class="token operator">||</span> month <span class="token operator">==</span> MAY<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;SPRING&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>month <span class="token operator">==</span> JUN<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;SUMMER&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span>
+<span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;wrong value&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><hr></details> <h3 id="reference-2-4"><a href="#reference-2-4" aria-hidden="true" class="header-anchor">#</a> Reference (2.4)</h3> <p>Example:</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">enum</span> <span class="token class-name">Letters</span> <span class="token punctuation">{</span> A<span class="token punctuation">,</span> B<span class="token punctuation">,</span> C<span class="token punctuation">,</span> D <span class="token punctuation">}</span>              <span class="token operator">|</span>      <span class="token keyword">enum</span> <span class="token class-name">Letters</span> <span class="token punctuation">{</span> A<span class="token punctuation">,</span> B<span class="token punctuation">,</span> C<span class="token punctuation">,</span> D <span class="token punctuation">}</span>
+                                         <span class="token operator">|</span>
+<span class="token keyword">int</span> enum_var <span class="token operator">=</span> TRUE<span class="token punctuation">;</span>                     <span class="token operator">|</span>      <span class="token keyword">int</span> enum_var <span class="token operator">=</span> TRUE<span class="token punctuation">;</span>    
+<span class="token keyword">switch</span> <span class="token punctuation">(</span>enum_var<span class="token punctuation">)</span>                        <span class="token operator">|</span>      <span class="token keyword">if</span> <span class="token punctuation">(</span>enum_var <span class="token operator">==</span> A<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>                                        <span class="token operator">|</span>      <span class="token punctuation">{</span>
+  <span class="token keyword">case</span> A<span class="token operator">:</span>                                <span class="token operator">|</span>          <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;A&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;A&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                         <span class="token operator">|</span>      <span class="token punctuation">}</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>                               <span class="token operator">|</span>      <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>enum_var <span class="token operator">==</span> B<span class="token punctuation">)</span>
+                                         <span class="token operator">|</span>      <span class="token punctuation">{</span>
+  <span class="token keyword">case</span> B<span class="token operator">:</span>                                <span class="token operator">|</span>          <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;B&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;B&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                         <span class="token operator">|</span>      <span class="token punctuation">}</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>                               <span class="token operator">|</span>      <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>enum_var <span class="token operator">==</span> C <span class="token operator">||</span> enum_var <span class="token operator">==</span> D<span class="token punctuation">)</span>
+                                         <span class="token operator">|</span>      <span class="token punctuation">{</span>
+  <span class="token keyword">case</span> C<span class="token operator">:</span>                                <span class="token operator">|</span>         <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;C || D&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">case</span> D<span class="token operator">:</span>                                <span class="token operator">|</span>      <span class="token punctuation">}</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;C || D&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                    <span class="token operator">|</span>      <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>                               <span class="token operator">|</span>         <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;WRONG LETTER&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+                                         <span class="token operator">|</span>      <span class="token punctuation">}</span>
+  <span class="token keyword">default</span><span class="token operator">:</span>                               <span class="token operator">|</span>   
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;WRONG LETTER&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token operator">|</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>                               <span class="token operator">|</span>
+<span class="token punctuation">}</span>                                        <span class="token operator">|</span>
+</code></pre></div><h2 id="_2-5-making-a-questionnaire"><a href="#_2-5-making-a-questionnaire" aria-hidden="true" class="header-anchor">#</a> 2.5. Making a questionnaire</h2> <p>Make a simple questionnaire containing 3 to 5 questions on any topic. Each question should have 4 possible answers. User should choose one answer by typing answer's number, which is integer from 1 to 4.</p> <p>Algorithm of the program:</p> <ol><li>Show first/next question and its answers.</li> <li>Ask user to input a desired answer's number.</li> <li>If the current question is the last one, display number of a correct answers in percentage and finish the program. Otherwise go to the first step.</li></ol> <p>Sample output:</p> <div class="language- extra-class"><pre class="language-text"><code>1. First question
+  1. Answer #1
+  2. Answer #2
+  3. Answer #3
+  4. Answer #4
+
+Please, choose the correct answer: 2
+
+2. Second question
+  1. First answer
+  2. Second answer
+  3. Third answer
+  4. Fourth answer
+
+Please, choose the correct answer: 4
+
+3. Third question
+  1. First answer
+  2. Second answer
+  3. Third answer
+  4. Fourth answer
+
+Please, choose the correct answer: 1
+
+Your success rate is 66 %.
+</code></pre></div><h3 id="reference-2-5"><a href="#reference-2-5" aria-hidden="true" class="header-anchor">#</a> Reference (2.5)</h3> <p>To read data from a standard input one should use a <code>scanf()</code> function. Here is an example of reading integer number from a standard input:</p> <div class="language-c extra-class"><pre class="language-c"><code>printf <span class="token punctuation">(</span><span class="token string">&quot;Please, enter your age: &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> age<span class="token punctuation">;</span>
+scanf <span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+printf <span class="token punctuation">(</span><span class="token string">&quot;It seems like your age is %d.&quot;</span><span class="token punctuation">,</span> age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/C-course/C-course/edit/master/docs/practice/02/README.md" target="_blank" rel="noopener noreferrer">Edit this page</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">Last updated: </span> <span class="time">7/9/2019, 9:49:50 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/practice/01/" class="prev">
+          1. Basic data types, operators, and if-else statement
+        </a></span> <span class="next"><a href="/practice/03/">
+          3. Loops and arrays: part one
+        </a>
+        →
+      </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6085cb73.js" defer></script><script src="/assets/js/3.498838e4.js" defer></script><script src="/assets/js/10.cbec5df7.js" defer></script><script src="/assets/js/4.d71eaa82.js" defer></script>
+  </body>
+</html>
